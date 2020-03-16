@@ -3,7 +3,6 @@ import numpy as np
 
 
 def video_demo():
-    """使用当前设备的摄像头"""
     capture = cv.VideoCapture(0)
     while (True):
         (ret, frame) = capture.read()
@@ -15,13 +14,24 @@ def video_demo():
 
 
 def get_image_info(image):
-    """打印Mat中的属性，Mat的shape表示这个图形的[高，宽，颜色通道数]，size表示所占空间，dtype表示类型，这里是uint8"""
     print(type(image))
     print(image.shape)
     print(image.size)
     print(image.dtype)
     pixel_data = np.array(image)
     print(pixel_data)
+
+
+def access_pixels(image):
+    """访问一个Mat的每一个像素，在python中Mat是一个三维数组。"""
+    print(image.shape)
+    height = image.shape[0]
+    width = image.shape[1]  # 宽度
+    channels = image.shape[2]  # 取色彩通道数，OpenCv中默认是BGR，所以一般是3
+    print("width : %s, height : %s channels : %s" % (width, height, channels))
+    # for row in range(height):
+    #     for col in range()
+
 
 
 print("----- Hello Python -----")
