@@ -31,7 +31,9 @@ def access_pixels(image):
     print("width : %s, height : %s channels : %s" % (width, height, channels))
     # for row in range(height):
     #     for col in range()
-
+#     update on a
+#     update on a2
+#     update on master
 
 
 print("----- Hello Python -----")
