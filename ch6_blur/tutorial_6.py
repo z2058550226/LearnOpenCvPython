@@ -17,11 +17,16 @@ def median_blur_demo():
 
 
 def custom_blur_demo():
-    kernel = np.ones([5, 5], np.float32) / 25  # 创建一个每一个元素都是1/25的矩阵作为核
-    leno = cv.imread('../res/leno.png')
+    leno = cv.imread('../res/in_leaves.jpg')
     cv.imshow('leno', leno)
-    dst = cv.filter2D(leno, -1, kernel)
+
+    blur_kernel = np.ones([5, 5], np.float32) / 25  # 创建一个每一个元素都是1/25的矩阵作为核
+    dst = cv.filter2D(leno, -1, blur_kernel)
     cv.imshow('custom_blur_demo', dst)
+
+    sharp_kernel = np.array([[0, -1, 0], [-1, 5, -1], [0, -1, 0]], np.float32)
+    dst = cv.filter2D(leno, -1, sharp_kernel)
+    cv.imshow('sharp_demo', dst)
 
 
 print("----- Hello Python -----")

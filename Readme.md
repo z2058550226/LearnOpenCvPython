@@ -39,6 +39,15 @@ RGB色彩空间不好表达，HSV的能很好的表述一个颜色。在OpenCV�
 | vmin | 0 | 46 | 221 | 46 | 46 | 46 | 46 | 46 | 46 | 46 | 46 |
 | vmax | 46 | 220 | 255 | 255 | 255 | 255 | 255 | 255 | 255 | 255 | 255 |
 
-## ch5 Region Of Interest
+## ch6 blur
 
+这里讲了一下高斯模糊，高斯模糊是opencv中比较常用的一个核（kernel），也有人叫算子。高斯模糊的核符合高斯分布。
+下图是一个连续的高斯分布函数：
 
+![@高斯分布](./note/gao_si_fen_bu.png)
+
+由于在OpenCV中图片是一个三维矩阵，所以高斯模糊运算用的是离散的算法。下面是一个宽度为5的高斯模糊的kernel：
+![@高斯模糊kernel](./note/classical_gaussian_filter.png)
+
+在进行模糊运算的时候为了效率，底层会将二维高斯矩阵拆成1维高斯矩阵进行运算：
+![@高斯运算拆分](./note/apply_gaussian_filter.png)
