@@ -27,8 +27,9 @@ def extract_object_demo():
         lower_hsv = np.array([37, 43, 46])
         upper_hsv = np.array([77, 255, 255])
         mask = cv.inRange(hsv, lowerb=lower_hsv, upperb=upper_hsv)
+        dst = cv.bitwise_and(frame, frame, mask=mask)
         cv.imshow("video", frame)
-        cv.imshow('mask', mask)
+        cv.imshow('mask', dst)
         c = cv.waitKey(40)
         if c == 27:
             break
@@ -51,8 +52,8 @@ src = cv.imread("../res/in_leaves.jpg")
 cv.namedWindow("input image", cv.WINDOW_AUTOSIZE)
 # color_space_demo(src)
 # cv.imshow("input image", src)
-# extract_object_demo()
-split_merge_demo(src)
+extract_object_demo()
+# split_merge_demo(src)
 
 cv.waitKey(0)
 cv.destroyAllWindows()
