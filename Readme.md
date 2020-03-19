@@ -10,6 +10,7 @@
     - numpy
     - opencv_python
     - opencv_python_headless
+    - matplotlib
 
 ## ch3 Color Space
 
