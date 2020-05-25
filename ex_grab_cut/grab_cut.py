@@ -14,7 +14,7 @@ mask = np.zeros(img.shape[:2], np.uint8)
 
 bgdModel = np.zeros((1, 65), np.float64)
 fgdModel = np.zeros((1, 65), np.float64)
-rect = (200, 0, 350, 750)
+# rect = (200, 0, 350, 750)
 # cv.grabCut(img, mask, rect, bgdModel, fgdModel, 5, cv.GC_INIT_WITH_RECT)
 #
 # mask2 = np.where((mask == 2) | (mask == 0), 0, 1).astype('uint8')
@@ -30,11 +30,12 @@ new_mask[75:80, 457:463] = 255  # white for foreground
 new_mask[200:300, 300:400] = 255
 
 show_mask(mask, 'original_mask')
-mask[0:750, 200:550] = 3
-mask[new_mask == 0] = 0
-mask[new_mask == 255] = 1
-mask2, bgdModel, fgdModel = cv.grabCut(img, mask, None, bgdModel, fgdModel, 5, cv.GC_INIT_WITH_MASK)
-show_mask(mask, 'mask')
+roi_mask = np.zeros(mask.shape[:2], np.uint8)
+roi_mask[0:750, 200:550] = 3
+roi_mask[new_mask == 0] = 0
+roi_mask[new_mask == 255] = 1
+mask2, bgdModel, fgdModel = cv.grabCut(img, roi_mask, None, bgdModel, fgdModel, 5, cv.GC_INIT_WITH_MASK)
+show_mask(roi_mask, 'mask')
 show_mask(mask2, 'mask2')
 mask3 = np.where((mask2 == 2) | (mask2 == 0), 0, 1).astype('uint8')
 show_mask(mask3, 'mask3')
